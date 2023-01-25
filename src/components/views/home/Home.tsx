@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { Button, StyleSheet, Text, View } from "react-native";
-import HomeProvider, { useHomeContext } from "../../../context/Home";
+import HomeProvider, { useHomeContext } from "../../context/Home";
 
 const Home = () => {
   const { navigate } = useNavigation();
