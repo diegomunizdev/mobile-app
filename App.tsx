@@ -1,47 +1,39 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Home } from "./src/components/views/home";
-import { Details } from "./src/components/views/details";
-import { StyleSheet } from "react-native";
-
-const Stack = createNativeStackNavigator();
-
-const routes = [
-  {
-    name: "Home",
-    component: Home,
-  },
-  {
-    name: "Details",
-    component: Details,
-  },
-];
+import { NativeBaseProvider, extendTheme } from "native-base";
+import Routes from "./src/components/views/routes/Routes";
 
 const App = () => {
-  const styles = StyleSheet.create({
-    btn: {
-      margin: 20,
-    },
-    header: {
-      backgroundColor: "#00ff00",
-      height: 100,
+  const theme = extendTheme({
+    colors: {
+      primary: {
+        50: "#ecf0f9",
+        100: "#c5d2ec",
+        200: "#b2c2e6",
+        300: "#9fb3e0",
+        400: "#7895d3",
+        500: "#5277c7",
+        600: "#14213d", // default
+        700: "#2c4987",
+        800: "#1f3460",
+        900: "#14213d", // default
+      },
+      secondary: {
+        50: "#fff5e6",
+        100: "#feebcd",
+        200: "#fee1b3",
+        300: "#fed89a",
+        400: "#fece81",
+        500: "#fdc468",
+        600: "#fdba4e",
+        700: "#fdb035",
+        800: "#fda61c",
+        900: "#fca311",
+      },
     },
   });
-
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        {routes.map((item, index) => (
-          <Stack.Screen
-            key={index}
-            {...item}
-            options={{
-              headerTitleAlign: "center",
-            }}
-          />
-        ))}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <NativeBaseProvider theme={theme}>
+      <Routes />
+    </NativeBaseProvider>
   );
 };
 
