@@ -1,12 +1,12 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { OrganismAuthentication } from "../../organisms/auth";
-import { AuthenticationFormField } from "../../../application/domain/FormFields/auth.formFields";
+import { IAuthenticationFormField } from "../../../application/domain/FormFields/auth.formFields";
 import { useAuthContext } from "../../context/Auth.context";
 
 const TemplateAuthentication = () => {
   const { signIn } = useAuthContext();
 
-  const formMethods = useForm<AuthenticationFormField>({
+  const formMethods = useForm<IAuthenticationFormField>({
     mode: "all",
     defaultValues: {
       email: null,

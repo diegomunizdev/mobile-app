@@ -7,6 +7,7 @@ import {
   ScrollView,
   Text,
   View,
+  useToast,
 } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -16,12 +17,13 @@ import { TouchableOpacity, VirtualizedList } from "react-native";
 const ViewAccount = () => {
   const { goBack } = useNavigation();
   const { signOut } = useAuthContext();
+  const { show } = useToast();
 
   const data = [
     {
       name: "Dados pessoais",
       icon: "account-outline",
-      onPress: () => {},
+      onPress: () => show({ title: "TESTE" }),
     },
     {
       name: "Notificações",

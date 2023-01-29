@@ -3,15 +3,14 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
-  useState,
 } from "react";
-import { AuthenticationFormField } from "../../application/domain/FormFields/auth.formFields";
+import { IAuthenticationFormField } from "../../application/types";
+import { useAuth } from "../../hooks/auth";
 
 interface AuthContextProps {
   isAuthenticated: boolean;
-  signIn: (data: AuthenticationFormField) => void;
+  signIn: (variables: IAuthenticationFormField) => void;
   signOut: () => void;
   signUp: () => void;
 }
@@ -26,26 +25,13 @@ interface AuthProps {
 }
 
 const AuthProvider = ({ children }: AuthProps) => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-
-  useEffect(() => {
-    setIsAuthenticated(true);
-  }, []);
-
-  const signIn = useCallback((data: AuthenticationFormField) => {
-    console.log("DATA", data);
-    setIsAuthenticated(true);
-  }, []);
-
-  const signOut = useCallback(() => {
-    setIsAuthenticated(false);
-  }, []);
+  const { state, signIn, signOut } = useAuth();
 
   const signUp = useCallback(() => {}, []);
 
   const value = useMemo(
-    () => ({ isAuthenticated, signIn, signOut, signUp }),
-    [isAuthenticated, signIn, signOut, signUp]
+    () => ({ isAuthenticated: state.isAuthenticated, signIn, signOut, signUp }),
+    [signIn, signOut, signUp, state.isAuthenticated]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

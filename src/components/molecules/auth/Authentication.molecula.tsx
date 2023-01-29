@@ -17,7 +17,7 @@ const MoleculaAuthentication = ({
   const { navigate } = useNavigation();
 
   return (
-    <Stack direction="column" space={10} m={5} p={5} bg="muted.50" shadow={4}>
+    <Stack direction="column" space={7} m={5} p={5} bg="muted.50" shadow={4}>
       <Controller
         name="email"
         control={control}

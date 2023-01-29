@@ -1,5 +1,6 @@
 import { NativeBaseProvider, extendTheme } from "native-base";
-import Routes from "./src/components/views/routes/Routes";
+import { Routes } from "./src/components/views/routes";
+import { useToastError } from "./src/hooks/useToastError";
 
 const App = () => {
   const theme = extendTheme({
@@ -30,6 +31,7 @@ const App = () => {
       },
     },
   });
+
   return (
     <NativeBaseProvider theme={theme}>
       <Routes />
