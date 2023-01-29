@@ -1,4 +1,15 @@
-import { Button, FormControl, Icon, Input, Stack } from "native-base";
+import {
+  Alert,
+  Box,
+  Button,
+  FormControl,
+  HStack,
+  Icon,
+  Input,
+  Stack,
+  Text,
+  VStack,
+} from "native-base";
 import { Control, Controller, FieldValues, FormState } from "react-hook-form";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -17,7 +28,7 @@ const MoleculaForgotPassword = ({
   const { goBack } = useNavigation();
 
   return (
-    <Stack direction="column" space={10} m={5} p={5} bg="#FFFFFF" shadow={4}>
+    <Stack direction="column" space={10} m={8}>
       <Controller
         name="email"
         control={control}
@@ -57,14 +68,20 @@ const MoleculaForgotPassword = ({
         )}
       />
 
-      <Button
-        onPress={() => {
-          onSubmit();
-        }}
-        isDisabled={!formState.isValid}
-      >
-        ENVIAR
-      </Button>
+      <Alert status="info">
+        <VStack>
+          <HStack space={2} alignItems="center">
+            <Alert.Icon />
+            <Text bold>Sobre a redefinição de senha</Text>
+          </HStack>
+          <Box pl="6">
+            Será enviado para o seu e-mail, o passo a passo para alterar a
+            senha.
+          </Box>
+        </VStack>
+      </Alert>
+
+      <Button isDisabled={!formState.isValid}>ENVIAR</Button>
 
       <Button variant="link" onPress={() => goBack()}>
         Voltar

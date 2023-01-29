@@ -6,6 +6,7 @@ import AuthProvider, { useAuthContext } from "../../context/Auth.context";
 import { ViewAuthentication, ViewForgotPassword } from "../auth";
 import { ViewAccount } from "../account";
 import { StackAnimationTypes } from "react-native-screens";
+import { ViewEntry } from "../entry";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -13,7 +14,7 @@ interface IRoutes {
   name: string;
   component: () => JSX.Element;
   options?: {
-    animation: StackAnimationTypes | undefined;
+    animation?: StackAnimationTypes | undefined;
     contentStyle?: StyleProp<ViewStyle>;
   };
 }
@@ -33,7 +34,11 @@ const Routes = () => {
     },
   });
 
-  const publicRoutes = [
+  const publicRoutes: IRoutes[] = [
+    {
+      name: "entry",
+      component: ViewEntry,
+    },
     {
       name: "signin",
       component: ViewAuthentication,
@@ -83,11 +88,14 @@ const Routes = () => {
       ) : (
         <NavigationContainer>
           <Navigator
-            initialRouteName="signin"
+            initialRouteName="entry"
             screenOptions={{
-              statusBarColor: "#14213d",
+              statusBarColor: "#FFFFFF",
               headerShown: false,
               animation: "fade",
+              contentStyle: {
+                backgroundColor: "#FFFFFF",
+              },
             }}
           >
             {publicRoutes.map((item, index) => (

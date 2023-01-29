@@ -1,12 +1,17 @@
-import { AUTH_ACTIONS_TYPES, IUseAuthAction, IUseAuthState } from "../types";
+import {
+  AUTH_ACTIONS_TYPES,
+  IUseAuthAction,
+  IUseAuthState,
+  initialAuthState,
+} from "../types";
 
 function authReducer(
-  state: IUseAuthState,
+  state: IUseAuthState = initialAuthState,
   action: IUseAuthAction
 ): IUseAuthState {
   switch (action.type) {
     case AUTH_ACTIONS_TYPES.SIGNIN_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, loading: true, success: false, error: false };
     case AUTH_ACTIONS_TYPES.SIGNIN_SUCCESS:
       return {
         ...state,
@@ -14,20 +19,17 @@ function authReducer(
         isAuthenticated: !!action.payload,
         loading: false,
         success: true,
+        error: false,
       };
     case AUTH_ACTIONS_TYPES.SIGNIN_ERROR:
       return {
         ...state,
         loading: false,
+        success: false,
         error: true,
       };
     case AUTH_ACTIONS_TYPES.SIGNOUT:
-      return {
-        ...state,
-        loading: false,
-        token: "",
-        isAuthenticated: false,
-      };
+      return initialAuthState;
     default:
       return state;
   }

@@ -9,8 +9,7 @@ import {
   initialAuthState,
 } from "../../application/types";
 import { authReducer } from "../../application/reducer";
-import axiosInstance from "../../application/client/axios.client";
-import useAxios from "../../application/client/axios.client";
+import { useAxios } from "../../application/client";
 
 interface UseAUth {
   state: IUseAuthState;
@@ -27,15 +26,18 @@ const useAuth = (): UseAUth => {
 
   const signIn = async (variables: IAuthenticationFormField): Promise<void> => {
     dispatch({ type: AUTH_ACTIONS_TYPES.SIGNIN_REQUEST });
-    await axiosInstance
-      .get("/api/v1/localidades/estados/")
-      .then((response) =>
-        dispatch({
-          type: AUTH_ACTIONS_TYPES.SIGNIN_SUCCESS,
-          payload: response.data,
+    setTimeout(async () => {
+      // url qualquer para teste
+      await axiosInstance
+        .get("/api/v1/localidades/estados/")
+        .then((response) => {
+          dispatch({
+            type: AUTH_ACTIONS_TYPES.SIGNIN_SUCCESS,
+            payload: response.data,
+          });
         })
-      )
-      .catch(() => dispatch({ type: AUTH_ACTIONS_TYPES.SIGNIN_ERROR }));
+        .catch(() => dispatch({ type: AUTH_ACTIONS_TYPES.SIGNIN_ERROR }));
+    }, 2000);
   };
 
   const forgotPassword = async (variables: IForgotPasswordFormField) => {};

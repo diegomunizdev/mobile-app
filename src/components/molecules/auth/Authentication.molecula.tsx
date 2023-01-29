@@ -1,7 +1,19 @@
-import { Button, FormControl, Icon, Input, Stack } from "native-base";
+import {
+  Box,
+  Button,
+  FormControl,
+  Icon,
+  Input,
+  Stack,
+  Text,
+} from "native-base";
 import { Control, Controller, FieldValues, FormState } from "react-hook-form";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useAuth } from "../../../hooks/auth";
+import { useAuthContext } from "../../context/Auth.context";
+import { useState } from "react";
+import { TouchableOpacity } from "react-native";
 
 interface MoleculaAuthenticationProps {
   control: Control<FieldValues, any>;
@@ -14,10 +26,13 @@ const MoleculaAuthentication = ({
   formState,
   onSubmit,
 }: MoleculaAuthenticationProps) => {
-  const { navigate } = useNavigation();
+  const { navigate, goBack } = useNavigation();
+  const { state } = useAuthContext();
+
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 
   return (
-    <Stack direction="column" space={7} m={5} p={5} bg="muted.50" shadow={4}>
+    <Stack direction="column" space={10} m={8}>
       <Controller
         name="email"
         control={control}
@@ -72,7 +87,7 @@ const MoleculaAuthentication = ({
         }) => (
           <FormControl isRequired isInvalid={!!error}>
             <Input
-              type="password"
+              type={passwordVisible ? "text" : "password"}
               placeholder="Senha"
               variant="underlined"
               isInvalid={!!error}
@@ -80,7 +95,17 @@ const MoleculaAuthentication = ({
               value={value}
               leftElement={
                 <Icon
-                  as={<MaterialCommunityIcons name="lock-outline" />}
+                  name="lock-outline"
+                  as={<MaterialCommunityIcons />}
+                  marginX={2}
+                  size={6}
+                />
+              }
+              rightElement={
+                <Icon
+                  name={passwordVisible ? "eye-outline" : "eye-off-outline"}
+                  as={<MaterialCommunityIcons />}
+                  onPress={() => setPasswordVisible(!passwordVisible)}
                   marginX={2}
                   size={6}
                 />
@@ -88,9 +113,19 @@ const MoleculaAuthentication = ({
               onBlur={onBlur}
               onChangeText={(text: string) => onChange(text)}
             />
-            <FormControl.ErrorMessage>
-              {error?.message}
-            </FormControl.ErrorMessage>
+            <Box
+              justifyContent={!!error ? "space-between" : "flex-end"}
+              flexDirection="row"
+            >
+              <FormControl.ErrorMessage>
+                {error?.message}
+              </FormControl.ErrorMessage>
+              <TouchableOpacity
+                onPress={() => navigate("forgot-password" as never)}
+              >
+                <FormControl.HelperText>Esqueci a senha</FormControl.HelperText>
+              </TouchableOpacity>
+            </Box>
           </FormControl>
         )}
       />
@@ -99,16 +134,14 @@ const MoleculaAuthentication = ({
         onPress={() => {
           onSubmit();
         }}
+        isLoading={state.loading}
         isDisabled={!formState.isValid}
       >
         ENTRAR
       </Button>
 
-      <Button
-        variant="link"
-        onPress={() => navigate("forgot-password" as never)}
-      >
-        Esqueceu senha?
+      <Button variant="link" onPress={() => goBack()}>
+        Voltar
       </Button>
     </Stack>
   );

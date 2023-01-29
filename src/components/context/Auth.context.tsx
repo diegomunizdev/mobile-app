@@ -5,10 +5,14 @@ import {
   useContext,
   useMemo,
 } from "react";
-import { IAuthenticationFormField } from "../../application/types";
+import {
+  IAuthenticationFormField,
+  IUseAuthState,
+} from "../../application/types";
 import { useAuth } from "../../hooks/auth";
 
 interface AuthContextProps {
+  state: IUseAuthState;
   isAuthenticated: boolean;
   signIn: (variables: IAuthenticationFormField) => void;
   signOut: () => void;
@@ -30,8 +34,14 @@ const AuthProvider = ({ children }: AuthProps) => {
   const signUp = useCallback(() => {}, []);
 
   const value = useMemo(
-    () => ({ isAuthenticated: state.isAuthenticated, signIn, signOut, signUp }),
-    [signIn, signOut, signUp, state.isAuthenticated]
+    () => ({
+      state,
+      isAuthenticated: state.isAuthenticated,
+      signIn,
+      signOut,
+      signUp,
+    }),
+    [state, signIn, signOut, signUp]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

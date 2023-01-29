@@ -50,7 +50,8 @@ const useAxios = () => {
   const { show } = useToast();
 
   const axiosInstance = axios.create({
-    baseURL: "https://servicodados.ibge.gov.br",
+    // baseURL qualquer para teste
+    baseURL: "ttps://servicodados.ibge.gov.br",
     httpsAgent: { rejectUnauthorized: false },
   });
 

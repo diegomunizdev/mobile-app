@@ -1,29 +1,18 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  FlatList,
-  Icon,
-  ScrollView,
-  Text,
-  View,
-  useToast,
-} from "native-base";
+import { TouchableOpacity } from "react-native";
+import { Avatar, Box, FlatList, Icon, Text, View } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 import { useAuthContext } from "../../context/Auth.context";
-import { TouchableOpacity, VirtualizedList } from "react-native";
 
 const ViewAccount = () => {
   const { goBack } = useNavigation();
   const { signOut } = useAuthContext();
-  const { show } = useToast();
 
   const data = [
     {
       name: "Dados pessoais",
       icon: "account-outline",
-      onPress: () => show({ title: "TESTE" }),
     },
     {
       name: "Notificações",
