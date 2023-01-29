@@ -10,7 +10,6 @@ import {
 import { Control, Controller, FieldValues, FormState } from "react-hook-form";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { useAuth } from "../../../hooks/auth";
 import { useAuthContext } from "../../context/Auth.context";
 import { useState } from "react";
 import { TouchableOpacity } from "react-native";
@@ -120,9 +119,7 @@ const MoleculaAuthentication = ({
               <FormControl.ErrorMessage>
                 {error?.message}
               </FormControl.ErrorMessage>
-              <TouchableOpacity
-                onPress={() => navigate("forgot-password" as never)}
-              >
+              <TouchableOpacity onPress={() => navigate("forgot-password")}>
                 <FormControl.HelperText>Esqueci a senha</FormControl.HelperText>
               </TouchableOpacity>
             </Box>

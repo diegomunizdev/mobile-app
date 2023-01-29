@@ -51,7 +51,7 @@ const useAxios = () => {
 
   const axiosInstance = axios.create({
     // baseURL qualquer para teste
-    baseURL: "ttps://servicodados.ibge.gov.br",
+    baseURL: "https://servicodados.ibge.gov.br",
     httpsAgent: { rejectUnauthorized: false },
   });
 

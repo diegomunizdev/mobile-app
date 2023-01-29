@@ -1,7 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { OrganismAuthentication } from "../../organisms/auth";
-import { IAuthenticationFormField } from "../../../application/domain/FormFields/auth.formFields";
 import { useAuthContext } from "../../context/Auth.context";
+import { IAuthenticationFormField } from "../../../application/types";
 
 const TemplateAuthentication = () => {
   const { signIn } = useAuthContext();

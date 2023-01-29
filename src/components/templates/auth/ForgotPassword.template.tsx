@@ -1,7 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { OrganismForgotPassword } from "../../organisms/auth";
-import { IForgotPasswordFormField } from "../../../application/domain/FormFields/auth.formFields";
 import { useAuthContext } from "../../context/Auth.context";
+import { IForgotPasswordFormField } from "../../../application/types";
 
 const TemplateForgotPassword = () => {
   const { signIn } = useAuthContext();

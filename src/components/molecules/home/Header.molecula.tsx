@@ -13,7 +13,9 @@ const MoleculaHomeHeader = () => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <TouchableOpacity onPress={() => navigate("account" as never)}>
+        <TouchableOpacity
+          onPress={() => navigate("account", { accountId: "20" })}
+        >
           <Avatar bg="secondary.900" size="md">
             US
           </Avatar>

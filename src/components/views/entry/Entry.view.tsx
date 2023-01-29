@@ -8,7 +8,7 @@ const ViewEntry = () => {
       <Box flex={1} />
       <VStack space={3} m={8} mb={20}>
         <Button>Criar minha conta</Button>
-        <Button variant="outline" onPress={() => navigate("signin" as never)}>
+        <Button variant="outline" onPress={() => navigate("signin")}>
           Entrar na minha conta
         </Button>
       </VStack>
