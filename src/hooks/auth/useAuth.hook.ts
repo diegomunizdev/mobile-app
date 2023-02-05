@@ -26,18 +26,17 @@ const useAuth = (): UseAUth => {
 
   const signIn = async (variables: IAuthenticationFormField): Promise<void> => {
     dispatch({ type: AUTH_ACTIONS_TYPES.SIGNIN_REQUEST });
-    setTimeout(async () => {
-      // url qualquer para teste
-      await axiosInstance
-        .get("/api/v1/localidades/estados/")
-        .then((response) => {
-          dispatch({
-            type: AUTH_ACTIONS_TYPES.SIGNIN_SUCCESS,
-            payload: response.data,
-          });
-        })
-        .catch(() => dispatch({ type: AUTH_ACTIONS_TYPES.SIGNIN_ERROR }));
-    }, 2000);
+    await axiosInstance
+      .post("auth/signin", variables)
+      .then((response) => {
+        dispatch({
+          type: AUTH_ACTIONS_TYPES.SIGNIN_SUCCESS,
+          payload: response.data,
+        });
+      })
+      .catch(() => {
+        dispatch({ type: AUTH_ACTIONS_TYPES.SIGNIN_ERROR });
+      });
   };
 
   const forgotPassword = async (variables: IForgotPasswordFormField) => {};

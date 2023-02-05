@@ -30,7 +30,7 @@ const interceptorError = (show: (props: IToastProps) => any, error: any) => {
         <Icon
           as={<MaterialCommunityIcons />}
           color="#FFFFFF"
-          name={icon}
+          name={icon || ""}
           mr={2}
           size={8}
         />
@@ -51,11 +51,11 @@ const useAxios = () => {
 
   const axiosInstance = axios.create({
     // baseURL qualquer para teste
-    baseURL: "https://servicodados.ibge.gov.br",
+    baseURL: "http://localhost:3000/api",
     httpsAgent: { rejectUnauthorized: false },
   });
 
-  axiosInstance.interceptors.request.use(/*interceptorRequest*/);
+  // axiosInstance.interceptors.request.use(/*interceptorRequest*/);
 
   axiosInstance.interceptors.response.use(undefined, (error) =>
     interceptorError(show, error)
