@@ -1,5 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import { IRoutes } from "../../views/routes/Routes";
 import { ViewEntry } from "../../views/entry";
 import { ViewAuthentication, ViewForgotPassword } from "../../views/auth";

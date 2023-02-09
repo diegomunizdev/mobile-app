@@ -51,11 +51,15 @@ const useAxios = () => {
 
   const axiosInstance = axios.create({
     // baseURL qualquer para teste
-    baseURL: "http://localhost:3000/api",
+    baseURL: "http://localhost:3001/api",
     httpsAgent: { rejectUnauthorized: false },
   });
 
-  // axiosInstance.interceptors.request.use(/*interceptorRequest*/);
+  axiosInstance.interceptors.request.use((value) => {
+    value.headers.Authorization =
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MDdkMTU4NS1jNmMzLTQwMDctYmRkMy1hNWU2ZDY3MjUwMDciLCJpYXQiOjE2NzU5MDM1NjcsImV4cCI6MTY3NTk4OTk2N30.LmQy9CuSQw8Z9M0O8zlMxKS3dEYsdYqTeSFuvZfC6DQ";
+    return value;
+  });
 
   axiosInstance.interceptors.response.use(undefined, (error) =>
     interceptorError(show, error)

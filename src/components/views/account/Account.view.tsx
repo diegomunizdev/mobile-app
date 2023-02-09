@@ -4,10 +4,14 @@ import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { useAuthContext } from "../../context/Auth.context";
+import HomeProvider, { useHomeContext } from "../../context/Home.context";
 
 const ViewAccount = () => {
   const { goBack } = useNavigation();
   const { signOut } = useAuthContext();
+  const { state } = useHomeContext();
+
+  console.log("ViewAccount", state);
 
   const data = [
     {
@@ -42,7 +46,7 @@ const ViewAccount = () => {
             US
           </Avatar>
           <Text ml={5} fontSize="lg" bold>
-            Usuário
+            {state?.account.name}
           </Text>
         </View>
       </View>
@@ -67,4 +71,8 @@ const ViewAccount = () => {
   );
 };
 
-export default ViewAccount;
+export default () => (
+  <HomeProvider>
+    <ViewAccount />
+  </HomeProvider>
+);
