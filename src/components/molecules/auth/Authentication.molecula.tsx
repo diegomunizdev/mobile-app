@@ -1,18 +1,10 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  Icon,
-  Input,
-  Stack,
-  Text,
-} from "native-base";
-import { Control, Controller, FieldValues, FormState } from "react-hook-form";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-import { useAuthContext } from "../../context/Auth.context";
 import { useState } from "react";
 import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { Control, Controller, FieldValues, FormState } from "react-hook-form";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Box, Button, FormControl, Icon, Input, Stack } from "native-base";
+import { useAuthContext } from "../../context/Auth.context";
 
 interface MoleculaAuthenticationProps {
   control: Control<FieldValues, any>;

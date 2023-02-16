@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import axios from "axios";
+
 import {
   AUTH_ACTIONS_TYPES,
   IAuthenticationFormField,

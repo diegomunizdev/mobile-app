@@ -10,7 +10,6 @@ function accountReducer(
   state: IUseAccountState = initialAccountState,
   action: IUseAccountAction
 ): IUseAccountState {
-  console.log("action", action);
   switch (action.type) {
     case ACCOUNT_ACTIONS_TYPES.GET_ACCOUNT_RESET:
       return initialAccountState;

@@ -1,12 +1,9 @@
 import { Box, Text } from "native-base";
 import { MoleculaHomeHeader } from "../../molecules/home";
-import { useAccounts } from "../../../hooks/useAccounts";
-import { useHomeContext } from "../../context/Home.context";
+import { usePrivateRoutesContext } from "../../context/PrivateRoutes.context";
 
 const OrganismHomeHeader = () => {
-  const { state } = useHomeContext();
-
-  console.log("useHomeContext", state);
+  const { state } = usePrivateRoutesContext();
 
   return (
     <Box bg="primary.900" px={5} py={5}>

@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Home } from "../../views/home";
 import { ViewAccount } from "../../views/account";
 import { IRoutes } from "../../views/routes/Routes";
+import { PrivateRoutesProvider } from "../../context";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -26,28 +27,30 @@ const PrivateRoutes = () => {
   ];
 
   return (
-    <NavigationContainer
-      linking={{
-        prefixes: [],
-        config: {
-          screens: {
-            account: "account/:accountId",
+    <PrivateRoutesProvider>
+      <NavigationContainer
+        linking={{
+          prefixes: [],
+          config: {
+            screens: {
+              account: "account/:accountId",
+            },
           },
-        },
-      }}
-    >
-      <Navigator
-        initialRouteName="home"
-        screenOptions={{
-          statusBarColor: "#14213d",
-          headerShown: false,
         }}
       >
-        {privateRoutes.map((item, index) => (
-          <Screen key={index} {...item} />
-        ))}
-      </Navigator>
-    </NavigationContainer>
+        <Navigator
+          initialRouteName="home"
+          screenOptions={{
+            statusBarColor: "#14213d",
+            headerShown: false,
+          }}
+        >
+          {privateRoutes.map((item, index) => (
+            <Screen key={index} {...item} />
+          ))}
+        </Navigator>
+      </NavigationContainer>
+    </PrivateRoutesProvider>
   );
 };
 

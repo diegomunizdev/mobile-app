@@ -4,14 +4,12 @@ import { useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { useAuthContext } from "../../context/Auth.context";
-import HomeProvider, { useHomeContext } from "../../context/Home.context";
+import { usePrivateRoutesContext } from "../../context/PrivateRoutes.context";
 
 const ViewAccount = () => {
   const { goBack } = useNavigation();
   const { signOut } = useAuthContext();
-  const { state } = useHomeContext();
-
-  console.log("ViewAccount", state);
+  const { state } = usePrivateRoutesContext();
 
   const data = [
     {
@@ -71,8 +69,4 @@ const ViewAccount = () => {
   );
 };
 
-export default () => (
-  <HomeProvider>
-    <ViewAccount />
-  </HomeProvider>
-);
+export default ViewAccount;

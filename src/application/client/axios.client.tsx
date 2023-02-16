@@ -4,7 +4,6 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const interceptorRequest = (value: any): any => {
   // injetar token de autenticação
-  console.log("interceptorRequest", value);
 };
 
 const interceptorError = (show: (props: IToastProps) => any, error: any) => {
@@ -51,13 +50,13 @@ const useAxios = () => {
 
   const axiosInstance = axios.create({
     // baseURL qualquer para teste
-    baseURL: "http://localhost:3001/api",
+    baseURL: "http://10.0.2.2:3001/api",
     httpsAgent: { rejectUnauthorized: false },
   });
 
   axiosInstance.interceptors.request.use((value) => {
     value.headers.Authorization =
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MDdkMTU4NS1jNmMzLTQwMDctYmRkMy1hNWU2ZDY3MjUwMDciLCJpYXQiOjE2NzU5MDM1NjcsImV4cCI6MTY3NTk4OTk2N30.LmQy9CuSQw8Z9M0O8zlMxKS3dEYsdYqTeSFuvZfC6DQ";
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MDdkMTU4NS1jNmMzLTQwMDctYmRkMy1hNWU2ZDY3MjUwMDciLCJpYXQiOjE2NzY1MDYzMjUsImV4cCI6MTY3NjU5MjcyNX0.0Sn3Uvtp-6mHbuKw5jp0wySaO68TD5RYVlUEM6mjehU";
     return value;
   });
 
