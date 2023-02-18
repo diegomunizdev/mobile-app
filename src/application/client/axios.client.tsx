@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Box, IToastProps, Icon, Text, useToast } from "native-base";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const interceptorRequest = (value: any): any => {
   // injetar token de autenticação
@@ -54,9 +55,12 @@ const useAxios = () => {
     httpsAgent: { rejectUnauthorized: false },
   });
 
-  axiosInstance.interceptors.request.use((value) => {
-    value.headers.Authorization =
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5MDdkMTU4NS1jNmMzLTQwMDctYmRkMy1hNWU2ZDY3MjUwMDciLCJpYXQiOjE2NzY1MDYzMjUsImV4cCI6MTY3NjU5MjcyNX0.0Sn3Uvtp-6mHbuKw5jp0wySaO68TD5RYVlUEM6mjehU";
+  axiosInstance.interceptors.request.use(async (value) => {
+    const accessToken = await AsyncStorage.getItem("accessToken");
+    if (accessToken) {
+      const token = JSON.parse(accessToken);
+      value.headers.Authorization = `Bearer ${token ? token.accessToken : ""}`;
+    }
     return value;
   });
 

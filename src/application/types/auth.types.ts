@@ -9,6 +9,7 @@ export interface IForgotPasswordFormField {
 
 export interface IUseAuthState {
   token: string;
+  accountLoggedId: any;
   isAuthenticated: boolean;
   loading: boolean;
   success: boolean;
@@ -22,6 +23,7 @@ export interface IUseAuthAction {
 
 export const initialAuthState: IUseAuthState = {
   token: "",
+  accountLoggedId: "",
   isAuthenticated: false,
   loading: false,
   success: false,

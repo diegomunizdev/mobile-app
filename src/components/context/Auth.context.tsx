@@ -33,6 +33,8 @@ const AuthProvider = ({ children }: AuthProps) => {
 
   const signUp = useCallback(() => {}, []);
 
+  console.log("STATE_TOKEN", state.token);
+
   const value = useMemo(
     () => ({
       state,

@@ -1,3 +1,4 @@
+import { decode } from "jsonwebtoken";
 import {
   AUTH_ACTIONS_TYPES,
   IUseAuthAction,
@@ -12,15 +13,20 @@ function authReducer(
   switch (action.type) {
     case AUTH_ACTIONS_TYPES.SIGNIN_REQUEST:
       return { ...state, loading: true, success: false, error: false };
-    case AUTH_ACTIONS_TYPES.SIGNIN_SUCCESS:
+    case AUTH_ACTIONS_TYPES.SIGNIN_SUCCESS: {
+      const sub = decode(action.payload);
+      // TODO: PAREI AQUI
+      console.log("SUB", sub);
       return {
         ...state,
         token: action.payload,
+        accountLoggedId: sub ?? "",
         isAuthenticated: !!action.payload,
         loading: false,
         success: true,
         error: false,
       };
+    }
     case AUTH_ACTIONS_TYPES.SIGNIN_ERROR:
       return {
         ...state,

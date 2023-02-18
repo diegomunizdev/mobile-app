@@ -1,5 +1,3 @@
-import { IUseAuthState } from "./auth.types";
-
 export interface IAddress {
   id: string | undefined;
   createdAt: string | undefined;

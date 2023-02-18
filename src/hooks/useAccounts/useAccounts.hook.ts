@@ -1,15 +1,13 @@
 import { useReducer } from "react";
 
 import {
-  AUTH_ACTIONS_TYPES,
   IGetAccount,
   IUseAuthAction,
   IUseAccountState,
-  initialAuthState,
   initialAccountState,
   ACCOUNT_ACTIONS_TYPES,
 } from "../../application/types";
-import { accountReducer, authReducer } from "../../application/reducer";
+import { accountReducer } from "../../application/reducer";
 import { useAxios } from "../../application/client";
 
 interface UseAccounts {

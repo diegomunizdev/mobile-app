@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import {
   AUTH_ACTIONS_TYPES,
@@ -28,7 +29,11 @@ const useAuth = (): UseAUth => {
     dispatch({ type: AUTH_ACTIONS_TYPES.SIGNIN_REQUEST });
     await axiosInstance
       .post("auth/signin", variables)
-      .then((response) => {
+      .then(async (response) => {
+        await AsyncStorage.setItem(
+          "accessToken",
+          JSON.stringify(response.data)
+        );
         dispatch({
           type: AUTH_ACTIONS_TYPES.SIGNIN_SUCCESS,
           payload: response.data,
@@ -42,6 +47,7 @@ const useAuth = (): UseAUth => {
   const forgotPassword = async (variables: IForgotPasswordFormField) => {};
 
   const signOut = () => {
+    AsyncStorage.clear();
     dispatch({ type: AUTH_ACTIONS_TYPES.SIGNOUT });
   };
 
