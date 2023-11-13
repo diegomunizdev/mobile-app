@@ -10,7 +10,8 @@
     "test": "jest --coverage -u",
     "prettier": "prettier . --write",
     "eslint": "eslint --fix .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "pre-commit": "yarn prettier && yarn eslint && yarn typecheck"
   },
   "jest": {
     "preset": "jest-expo"
