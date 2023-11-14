@@ -1,13 +1,31 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeView from '../../components/views/home/HomeView';
+
+const Stack = createNativeStackNavigator();
 
 export default function PublicRoutes() {
-  const { t } = useTranslation();
+  const routes = [
+    {
+      name: 'home',
+      component: HomeView,
+      options: { headerShown: false },
+    },
+  ];
 
   return (
-    <View>
-      <Text>{t('app')}</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        {routes.map((route, index) => (
+          <Stack.Screen
+            key={index}
+            name={route.name}
+            component={route.component}
+            options={route.options}
+          />
+        ))}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
