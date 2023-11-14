@@ -10,10 +10,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --coverage -u",
-    "prettier:check": "prettier . -l",
-    "prettier:fix": "prettier . --write",
-    "eslint:check": "eslint .",
-    "eslint:fix": "eslint --fix .",
+    "prettier": "prettier . -l",
+    "eslint": "eslint .",
     "typecheck": "tsc --noEmit",
     "prepare": "husky install"
   },

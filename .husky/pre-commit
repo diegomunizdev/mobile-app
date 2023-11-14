@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn prettier:check
+yarn prettier
 
-yarn eslint:check
+yarn eslint
 
 yarn typecheck
 
