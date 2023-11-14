@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn prettier
-yarn eslint
+yarn prettier:check
+
+yarn eslint:check
+
 yarn typecheck
+
+echo "## Successfully completed analysis ##"

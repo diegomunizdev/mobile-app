@@ -10,8 +10,10 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --coverage -u",
-    "prettier": "prettier . --write",
-    "eslint": "eslint --fix .",
+    "prettier:check": "prettier . -l",
+    "prettier:fix": "prettier . --write",
+    "eslint:check": "eslint .",
+    "eslint:fix": "eslint --fix .",
     "typecheck": "tsc --noEmit",
     "prepare": "husky install"
   },
@@ -46,13 +48,6 @@
     "lint-staged": "^15.1.0",
     "prettier": "^3.1.0",
     "typescript": "^5.2.2"
-  },
-  "lint-staged": {
-    "*.{js, jsx,ts,tsx}": [
-      "yarn typecheck",
-      "yarn prettier",
-      "yarn eslint"
-    ]
   },
   "private": true
 }
