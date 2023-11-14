@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
@@ -18,3 +18,18 @@ jobs:
         run: |
           yarn
           yarn test
+
+  tests_result:
+    if: ${{ always() }}
+    name: Status check result
+    needs: [tests]
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          if [[ "${{needs.tests.result}}" == "success" ]]; then
+            echo "All tests passed"
+            exit 0
+          else
+            echo "Some test failed"
+            exit 1
+          fi
