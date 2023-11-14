@@ -5,8 +5,38 @@ on:
     branches: [main]
 
 jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.2.0
+        with:
+          node-version: 18.x
+      - name: run the typecheck
+        run: |
+          yarn
+          yarn typecheck
+
+  prettier:
+    runs-on: ubuntu-latest
+    needs: typecheck
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.2.0
+        with:
+          node-version: 18.x
+      - name: run the prettier
+        run: |
+          yarn
+          yarn prettier
+
   eslint:
     runs-on: ubuntu-latest
+    needs: prettier
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
