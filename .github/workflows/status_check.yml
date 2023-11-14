@@ -51,6 +51,7 @@ jobs:
           yarn eslint
 
   status_check_result:
+    if: ${{ always() }}
     name: Status check result
     needs: [typecheck, prettier, eslint]
     runs-on: ubuntu-latest
