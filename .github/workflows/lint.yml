@@ -1,4 +1,4 @@
-name: ESlint
+name: Lint
 
 on:
   push:
