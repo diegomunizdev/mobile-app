@@ -57,11 +57,11 @@ jobs:
     needs: [typecheck, prettier, eslint]
     runs-on: ubuntu-latest
     steps:
-      run: |
-        if [[ "${{needs.typecheck.result}}" == "success" && "${{needs.prettier.result}}" == "success" && "${{needs.eslint.result}}" == "success" ]]; then
-          echo "All checks passed"
-          exit 0
-        else
-          echo "Some check failed"
-          exit 1
-        fi
+      - run: |
+          if [[ "${{needs.typecheck.result}}" == "success" && "${{needs.prettier.result}}" == "success" && "${{needs.eslint.result}}" == "success" ]]; then
+            echo "All checks passed"
+            exit 0
+          else
+            echo "Some check failed"
+            exit 1
+          fi
