@@ -1,6 +1,10 @@
 name: Status check
 
-on: [push]
+on:
+  merge:
+    branches: [main]
+  pull_request:
+    branches: [develop]
 
 jobs:
   typecheck:
