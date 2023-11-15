@@ -1,10 +1,8 @@
 name: Status check
 
 on:
-  merge:
-    branches: [main]
   push:
-    branches: [develop]
+    branches: [main, develop]
 
 jobs:
   typecheck:
