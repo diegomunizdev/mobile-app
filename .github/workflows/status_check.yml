@@ -3,7 +3,7 @@ name: Status check
 on:
   merge:
     branches: [main]
-  pull_request:
+  push:
     branches: [develop]
 
 jobs:
