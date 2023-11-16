@@ -12,10 +12,7 @@ export default function AccountActionsMolecule({ name, icon }: AccountActionsMol
   const theme = useTheme();
 
   return (
-    <TouchableOpacity
-      onPress={() => console.log(name)}
-      testID="AccountActionsMolecule-TouchableOpacity"
-    >
+    <TouchableOpacity onPress={() => {}} testID="AccountActionsMolecule-TouchableOpacity">
       <View
         testID="AccountActionsMolecule-View"
         style={{ flexDirection: 'column', alignItems: 'center' }}

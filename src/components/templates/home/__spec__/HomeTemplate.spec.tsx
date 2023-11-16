@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
-import HomeTemplate from './HomeTemplate';
+import HomeTemplate from '../HomeTemplate';
 
 jest.mock('react-i18next', () => ({
   ...jest.requireActual('react-i18next'),
@@ -71,7 +71,7 @@ describe('Given <HomeTemplate/>', () => {
     it('Then you should call', () => {
       const { getByTestId } = setup();
 
-      const touchableOpacity = getByTestId('ActionsMolecule-TouchableOpacity_icon-eye');
+      const touchableOpacity = getByTestId('ActionsMolecule-TouchableOpacity_icon');
 
       fireEvent.press(touchableOpacity);
     });

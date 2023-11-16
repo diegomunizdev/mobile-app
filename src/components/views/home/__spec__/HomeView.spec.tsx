@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
-import HomeView from './HomeView';
+import HomeView from '../HomeView';
 
 jest.mock('react-i18next', () => ({
   ...jest.requireActual('react-i18next'),
@@ -51,7 +51,7 @@ describe('Given <HomeView/>', () => {
     it('Then you should call', () => {
       const { getByTestId } = setup();
 
-      const touchableOpacity = getByTestId('ActionsMolecule-TouchableOpacity_icon-eye');
+      const touchableOpacity = getByTestId('ActionsMolecule-TouchableOpacity_icon');
 
       fireEvent.press(touchableOpacity);
     });
@@ -87,6 +87,16 @@ describe('Given <HomeView/>', () => {
         fireEvent.press(item);
         expect(mockNavigate).toHaveBeenCalled();
       });
+    });
+  });
+
+  describe('When there is a click on the MyCreditCardsAtom TouchableOpacity', () => {
+    it('Then you should call navigate', () => {
+      const { getByTestId } = setup();
+
+      const touchableOpacity = getByTestId('MyCreditCardsAtom-TouchableOpacity');
+
+      fireEvent.press(touchableOpacity);
     });
   });
 });

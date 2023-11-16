@@ -7,10 +7,7 @@ export default function MyCreditCardsAtom() {
   const theme = useTheme();
 
   return (
-    <TouchableOpacity
-      onPress={() => console.log('meus cartões')}
-      testID="MyCreditCardsAtom-TouchableOpacity"
-    >
+    <TouchableOpacity onPress={() => {}} testID="MyCreditCardsAtom-TouchableOpacity">
       <View
         style={{
           backgroundColor: theme.colors.background,

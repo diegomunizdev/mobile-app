@@ -10,7 +10,7 @@ export default function UserMolecule() {
   });
 
   return (
-    <TouchableOpacity testID="UserMolecule-TouchableOpacity" onPress={() => console.log('conta')}>
+    <TouchableOpacity testID="UserMolecule-TouchableOpacity" onPress={() => {}}>
       <View style={{ flexDirection: 'row' }} testID="UserMolecule-View">
         <Avatar.Text size={40} label="DM" testID="UserMolecule-Avatar" />
         <View style={styles.textUsername} testID="UserMolecule-View-user">

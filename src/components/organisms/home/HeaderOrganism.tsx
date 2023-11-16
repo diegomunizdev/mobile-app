@@ -6,9 +6,8 @@ import ActionsMolecule from '../../molecules/home/ActionsMolecule';
 export default function HeaderOrganism() {
   const styles = StyleSheet.create({
     container: {
-      marginTop: 50,
-      flex: 1,
-      maxHeight: 120,
+      marginTop: 30,
+      height: 150,
       paddingHorizontal: 20,
       flexDirection: 'row',
       alignItems: 'center',
