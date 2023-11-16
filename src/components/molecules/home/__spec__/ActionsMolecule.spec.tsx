@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
 import ActionsMolecule from '../ActionsMolecule';
 
-describe('Given <TitleRedirectorAtom/>', () => {
+describe('Given <ActionsMolecule/>', () => {
   const setup = () => render(<ActionsMolecule />);
 
   describe('When the component is renderer', () => {

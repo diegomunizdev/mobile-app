@@ -7,7 +7,7 @@ type AccountActionsMoleculeProps = {
   icon: string;
 };
 
-describe('Given <AccountActionsMolecule/>', () => {
+describe('Given <AccountActionsMoleculeProps/>', () => {
   const setup = (props: AccountActionsMoleculeProps) =>
     render(<AccountActionsMolecule {...props} />);
 
