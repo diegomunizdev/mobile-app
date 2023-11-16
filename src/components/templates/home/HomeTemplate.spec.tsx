@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
-import HomeView from './HomeView';
+import HomeTemplate from './HomeTemplate';
 
 jest.mock('react-i18next', () => ({
   ...jest.requireActual('react-i18next'),
@@ -22,18 +22,38 @@ jest.mock('@react-navigation/native', () => ({
   },
 }));
 
-describe('Given <HomeView/>', () => {
-  const setup = () => render(<HomeView />);
+describe('Given <HomeTemplate/>', () => {
+  const setup = () => render(<HomeTemplate />);
 
-  describe('When the component is renderer', () => {
-    it('Then a text should appear', () => {
-      const { getByTestId } = setup();
-      getByTestId('HomeView-View');
-    });
-
-    it('Then a <HomeTemplate/> should appear', () => {
+  describe('When the <HomeTemplate/> is renderer', () => {
+    it('Then a <View/> should appear', () => {
       const { getByTestId } = setup();
       getByTestId('HomeTemplate-View');
+    });
+
+    it('Then a <HeaderOrganism/> should appear', () => {
+      const { getByTestId } = setup();
+      getByTestId('HeaderOrganism-View');
+    });
+
+    it('Then a <AccountBalanceOrganism/> should appear', () => {
+      const { getByTestId } = setup();
+      getByTestId('AccountBalanceOrganism-View');
+    });
+
+    it('Then a <AccountActionsOrganism/> should appear', () => {
+      const { getByTestId } = setup();
+      getByTestId('AccountActionsOrganism-View');
+    });
+
+    it('Then a <CreditCardOrganism/> should appear', () => {
+      const { getByTestId } = setup();
+      getByTestId('CreditCardOrganism-View');
+    });
+
+    it('Then a <LoanContractingOrganism/> should appear', () => {
+      const { getByTestId } = setup();
+      getByTestId('LoanContractingOrganism-View');
     });
   });
 

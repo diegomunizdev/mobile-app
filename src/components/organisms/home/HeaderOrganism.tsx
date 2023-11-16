@@ -17,7 +17,7 @@ export default function HeaderOrganism() {
   });
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="HeaderOrganism-View">
       <UserMolecule />
       <ActionsMolecule />
     </View>

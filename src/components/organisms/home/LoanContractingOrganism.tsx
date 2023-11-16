@@ -4,7 +4,7 @@ import { View } from 'react-native';
 
 export default function LoanContractingOrganism() {
   return (
-    <View style={{ marginHorizontal: 20 }}>
+    <View style={{ marginHorizontal: 20 }} testID="LoanContractingOrganism-View">
       <LoanContractingMolecule />
     </View>
   );

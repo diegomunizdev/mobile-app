@@ -35,7 +35,7 @@ export default function AccountActionsOrganism() {
   ];
 
   return (
-    <View style={{ marginVertical: 30 }}>
+    <View style={{ marginVertical: 30 }} testID="AccountActionsOrganism-View">
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {options.map((item, index) => (
           <AccountActionsMolecule key={index} name={item.name} icon={item.icon} />

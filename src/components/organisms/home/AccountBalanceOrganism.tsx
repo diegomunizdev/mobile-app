@@ -4,7 +4,7 @@ import AccountBalanceMolecule from '../../molecules/home/AccountBalanceMolecule'
 
 export default function AccountBalanceOrganism() {
   return (
-    <View style={{ paddingHorizontal: 20 }}>
+    <View style={{ paddingHorizontal: 20 }} testID="AccountBalanceOrganism-View">
       <AccountBalanceMolecule />
     </View>
   );
