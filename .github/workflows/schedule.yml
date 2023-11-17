@@ -1,11 +1,11 @@
-name: Tests
+name: Schedule test
 
 on:
   schedule:
     - cron: '3 * * * *'
 
 jobs:
-  tests:
+  schedule_test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
