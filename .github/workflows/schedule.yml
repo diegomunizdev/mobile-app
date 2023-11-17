@@ -1,9 +1,9 @@
 name: Schedule test
 
 on:
+  push:
   schedule:
     - cron: '*/3 * * * *'
-  workflow_dispatch:
 
 jobs:
   schedule_test:
