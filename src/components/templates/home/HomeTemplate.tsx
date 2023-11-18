@@ -9,7 +9,7 @@ import { View } from 'react-native';
 
 export default function HomeTemplate() {
   return (
-    <View>
+    <View testID="HomeTemplate-View">
       <HeaderOrganism />
       <AccountBalanceOrganism />
       <AccountActionsOrganism />

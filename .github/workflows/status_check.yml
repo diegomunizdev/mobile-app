@@ -2,7 +2,7 @@ name: Status check
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
 
 jobs:
   typecheck:
@@ -33,7 +33,7 @@ jobs:
       - name: run the prettier
         run: |
           yarn
-          yarn prettier
+          yarn lint:prettier
 
   eslint:
     name: ESlint
@@ -48,7 +48,7 @@ jobs:
       - name: run the eslint
         run: |
           yarn
-          yarn eslint
+          yarn lint:eslint
 
   status_check_result:
     if: ${{ always() }}

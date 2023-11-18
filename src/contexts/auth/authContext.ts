@@ -1,5 +1,10 @@
-import { createContext, useContext } from 'react';
+import { Dispatch, SetStateAction, createContext, useContext } from 'react';
 
-export const AuthContext = createContext({});
+type AuthContextProps = {
+  isAuthenticated: boolean;
+  setIsAuthenticated: Dispatch<SetStateAction<boolean>>;
+};
 
-export const useAuthContext = () => useContext(AuthContext);
+export const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
+
+export const useAuthContext = () => useContext<AuthContextProps>(AuthContext);
