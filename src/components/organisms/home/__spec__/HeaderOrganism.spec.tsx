@@ -17,7 +17,7 @@ jest.mock('@react-navigation/native', () => ({
 describe('Given <HeaderOrganism/>', () => {
   const setup = (contextProps: HomeContextProps) =>
     render(
-      <HomeContext.Provider value={contextProps as HomeContextProps}>
+      <HomeContext.Provider value={contextProps}>
         <HeaderOrganism />
       </HomeContext.Provider>,
     );
@@ -45,10 +45,9 @@ describe('Given <HeaderOrganism/>', () => {
   describe('When there is a click on the UserMolecule TouchableOpacity', () => {
     it('Then you should call', () => {
       const { getByTestId } = setup(mockContextProps);
-
       const touchableOpacity = getByTestId('UserMolecule-TouchableOpacity');
-
       fireEvent.press(touchableOpacity);
+      expect(mockNavigate).toHaveBeenCalled();
     });
   });
 
@@ -68,9 +67,7 @@ describe('Given <HeaderOrganism/>', () => {
     describe('When there is a click on the ActionsMolecule TouchableOpacity eye', () => {
       it('Then you should call', () => {
         const { getByTestId } = setup(mockContextProps);
-
         const touchableOpacity = getByTestId('ActionsMolecule-TouchableOpacity_icon');
-
         fireEvent.press(touchableOpacity);
         expect(mockSetHideValues).toHaveBeenCalled();
       });
@@ -79,9 +76,7 @@ describe('Given <HeaderOrganism/>', () => {
     describe('When there is a click on the ActionsMolecule TouchableOpacity bell', () => {
       it('Then you should call', () => {
         const { getByTestId } = setup(mockContextProps);
-
         const touchableOpacity = getByTestId('ActionsMolecule-TouchableOpacity_icon-bell');
-
         fireEvent.press(touchableOpacity);
       });
     });

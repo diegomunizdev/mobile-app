@@ -1,6 +1,7 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
 import HomeTemplate from '../HomeTemplate';
+import { HomeContext, HomeContextProps } from '../../../../contexts/home/homeContext';
 
 jest.mock('react-i18next', () => ({
   ...jest.requireActual('react-i18next'),
@@ -23,74 +24,82 @@ jest.mock('@react-navigation/native', () => ({
 }));
 
 describe('Given <HomeTemplate/>', () => {
-  const setup = () => render(<HomeTemplate />);
+  const setup = (contextProps: HomeContextProps) =>
+    render(
+      <HomeContext.Provider value={contextProps}>
+        <HomeTemplate />
+      </HomeContext.Provider>,
+    );
+
+  const mockSetHideValues = jest.fn();
+  const mockContextProps: HomeContextProps = {
+    hideValues: false,
+    setHideValues: mockSetHideValues,
+  };
 
   describe('When the <HomeTemplate/> is renderer', () => {
     it('Then a <View/> should appear', () => {
-      const { getByTestId } = setup();
+      const { getByTestId } = setup(mockContextProps);
       getByTestId('HomeTemplate-View');
     });
 
     it('Then a <HeaderOrganism/> should appear', () => {
-      const { getByTestId } = setup();
+      const { getByTestId } = setup(mockContextProps);
       getByTestId('HeaderOrganism-View');
     });
 
     it('Then a <AccountBalanceOrganism/> should appear', () => {
-      const { getByTestId } = setup();
+      const { getByTestId } = setup(mockContextProps);
       getByTestId('AccountBalanceOrganism-View');
     });
 
     it('Then a <AccountActionsOrganism/> should appear', () => {
-      const { getByTestId } = setup();
+      const { getByTestId } = setup(mockContextProps);
       getByTestId('AccountActionsOrganism-View');
     });
 
     it('Then a <CreditCardOrganism/> should appear', () => {
-      const { getByTestId } = setup();
+      const { getByTestId } = setup(mockContextProps);
       getByTestId('CreditCardOrganism-View');
     });
 
     it('Then a <LoanContractingOrganism/> should appear', () => {
-      const { getByTestId } = setup();
+      const { getByTestId } = setup(mockContextProps);
       getByTestId('LoanContractingOrganism-View');
     });
   });
 
   describe('When there is a click on the UserMolecule TouchableOpacity', () => {
     it('Then you should call', () => {
-      const { getByTestId } = setup();
+      const { getByTestId } = setup(mockContextProps);
 
       const touchableOpacity = getByTestId('UserMolecule-TouchableOpacity');
 
       fireEvent.press(touchableOpacity);
+      expect(mockNavigate).toHaveBeenCalled();
     });
   });
 
   describe('When there is a click on the ActionsMolecule TouchableOpacity eye', () => {
     it('Then you should call', () => {
-      const { getByTestId } = setup();
-
+      const { getByTestId } = setup(mockContextProps);
       const touchableOpacity = getByTestId('ActionsMolecule-TouchableOpacity_icon');
-
       fireEvent.press(touchableOpacity);
+      expect(mockSetHideValues).toHaveBeenCalled();
     });
   });
 
   describe('When there is a click on the ActionsMolecule TouchableOpacity bell', () => {
     it('Then you should call', () => {
-      const { getByTestId } = setup();
-
+      const { getByTestId } = setup(mockContextProps);
       const touchableOpacity = getByTestId('ActionsMolecule-TouchableOpacity_icon-bell');
-
       fireEvent.press(touchableOpacity);
     });
   });
 
   describe('When there is a click on the AccountActionsMolecule TouchableOpacity', () => {
     it('Then you should call', () => {
-      const { getAllByTestId } = setup();
-
+      const { getAllByTestId } = setup(mockContextProps);
       const touchableOpacity = getAllByTestId('AccountActionsMolecule-TouchableOpacity');
       touchableOpacity.forEach((item) => {
         fireEvent.press(item);
@@ -100,8 +109,7 @@ describe('Given <HomeTemplate/>', () => {
 
   describe('When there is a click on the TitleRedirectorAtom TouchableOpacity', () => {
     it('Then you should call navigate', () => {
-      const { getAllByTestId } = setup();
-
+      const { getAllByTestId } = setup(mockContextProps);
       const touchableOpacity = getAllByTestId('TitleRedirectorAtom-TouchableOpacity');
       touchableOpacity.forEach((item) => {
         fireEvent.press(item);
