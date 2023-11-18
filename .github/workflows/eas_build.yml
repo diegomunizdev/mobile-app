@@ -1,12 +1,13 @@
-name: update
+name: EAS Build
 
 on:
+  workflow_dispatch:
   push:
-    branches: [main, develop]
+    branches: [main]
 
 jobs:
   update:
-    name: EAS Update
+    name: EAS Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -24,8 +25,7 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Install dependencies
-        run: yarn
-
-      - name: Publish update
-        run: yarn eas:build
+      - name: Publish build
+        run: |
+          yarn
+          yarn eas:build
