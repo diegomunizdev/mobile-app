@@ -2,7 +2,11 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Avatar, Text } from 'react-native-paper';
 
-export default function UserMolecule() {
+type UserMoleculeProps = {
+  action?: () => void;
+};
+
+export default function UserMolecule({ action }: UserMoleculeProps) {
   const styles = StyleSheet.create({
     textUsername: {
       marginLeft: 8,
@@ -10,7 +14,7 @@ export default function UserMolecule() {
   });
 
   return (
-    <TouchableOpacity testID="UserMolecule-TouchableOpacity" onPress={() => {}}>
+    <TouchableOpacity testID="UserMolecule-TouchableOpacity" onPress={action}>
       <View style={{ flexDirection: 'row' }} testID="UserMolecule-View">
         <Avatar.Text size={40} label="DM" testID="UserMolecule-Avatar" />
         <View style={styles.textUsername} testID="UserMolecule-View-user">
