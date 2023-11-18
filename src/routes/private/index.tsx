@@ -5,6 +5,8 @@ import { ScreenProps } from 'react-native-screens';
 import HomeView from '../../components/views/home/HomeView';
 import CreditCardView from '../../components/views/cards/creditCard/CreditCardView';
 import AccountView from '../../components/views/account/AccountView';
+import MyCreditCardsView from '../../components/views/cards/creditCard/MyCreditCardsView';
+import AvailableBalanceView from '../../components/views/availableBalance/AvailableBalanceView';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,8 +31,18 @@ export default function PrivateRoutes() {
       options: { animation: 'fade', headerShown: false } as ScreenProps,
     },
     {
+      name: 'availableBalance',
+      component: AvailableBalanceView,
+      options: { animation: 'fade', headerShown: false } as ScreenProps,
+    },
+    {
       name: 'creditCard',
       component: CreditCardView,
+      options: { animation: 'fade', headerShown: false } as ScreenProps,
+    },
+    {
+      name: 'myCreditCard',
+      component: MyCreditCardsView,
       options: { animation: 'fade', headerShown: false } as ScreenProps,
     },
   ];

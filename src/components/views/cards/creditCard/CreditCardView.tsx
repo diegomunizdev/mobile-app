@@ -14,21 +14,17 @@ export default function CreditCardView() {
         <TouchableOpacity onPress={() => goBack()}>
           <MaterialCommunityIcons name="chevron-left" size={24} />
         </TouchableOpacity>
-        <View style={{ marginBottom: 20, marginTop: 20 }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              marginBottom: 10,
-            }}
-          >
-            <Text variant="bodyLarge">Cartão de crédito</Text>
-            <MaterialCommunityIcons name="chevron-right" size={24} />
+        <View style={{ marginBottom: 20 }}>
+          <Text variant="titleLarge" style={{ marginTop: 20 }} testID="MyCreditCardsTemplate-Text">
+            Meus cartões de crédito
+          </Text>
+          <View style={{ marginTop: 30 }}>
+            <Text variant="bodySmall">Fatura atual</Text>
+            <Text variant="headlineMedium">R$ 2.478,39</Text>
           </View>
-          <Text variant="bodySmall">Fatura atual</Text>
-          <Text variant="titleMedium">R$ 2.478,39</Text>
-          <Text variant="bodySmall">Valor disponível: R$ 5.548,39</Text>
+          <Text variant="bodySmall" style={{ marginTop: 40 }}>
+            Valor disponível: R$ 5.548,39
+          </Text>
           <View
             style={{
               backgroundColor: theme.colors.background,

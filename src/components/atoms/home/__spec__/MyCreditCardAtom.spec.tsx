@@ -2,6 +2,17 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
 import MyCreditCardsAtom from '../MyCreditCardsAtom';
 
+const mockNavigate = jest.fn((str) => str);
+
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('@react-navigation/native'),
+  useNavigation: () => {
+    return {
+      navigate: mockNavigate,
+    };
+  },
+}));
+
 describe('Given <MyCreditCardsAtom/>', () => {
   const setup = () => render(<MyCreditCardsAtom />);
 
@@ -30,10 +41,9 @@ describe('Given <MyCreditCardsAtom/>', () => {
   describe('When there is a click on the TouchableOpacity', () => {
     it('Then you should call navigate', () => {
       const { getByTestId } = setup();
-
       const touchableOpacity = getByTestId('MyCreditCardsAtom-TouchableOpacity');
-
       fireEvent.press(touchableOpacity);
+      expect(mockNavigate).toHaveBeenCalled();
     });
   });
 });

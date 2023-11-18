@@ -11,7 +11,7 @@ describe('Given <ActionsMolecule/>', () => {
       </HomeContext.Provider>,
     );
 
-  const mockSetHideValues = jest.fn();
+  const mockSetHideValues = jest.fn((state) => state);
   const mockContextProps = { hideValues: false, setHideValues: mockSetHideValues };
 
   describe('When the component is renderer', () => {
@@ -30,11 +30,6 @@ describe('Given <ActionsMolecule/>', () => {
         const { getByTestId } = setup({ ...mockContextProps, hideValues: true });
         getByTestId('ActionsMolecule-MaterialCommunityIcons_icon-eye');
       });
-
-      it('Then when it is false the eye shouldn`t appear', () => {
-        const { getByTestId } = setup(mockContextProps);
-        getByTestId('ActionsMolecule-MaterialCommunityIcons_icon-eye-off');
-      });
     });
 
     it('Then a TouchableOpacity bell should appear', () => {
@@ -51,9 +46,14 @@ describe('Given <ActionsMolecule/>', () => {
   describe('When there is a click on the TouchableOpacity', () => {
     it('Then you should call', () => {
       const { getByTestId } = setup({ ...mockContextProps, hideValues: true });
-
       const touchableOpacity = getByTestId('ActionsMolecule-TouchableOpacity_icon');
+      fireEvent.press(touchableOpacity);
+      expect(mockSetHideValues).toHaveBeenCalled();
+    });
 
+    it('Then you should call', () => {
+      const { getByTestId } = setup({ ...mockContextProps, hideValues: false });
+      const touchableOpacity = getByTestId('ActionsMolecule-TouchableOpacity_icon');
       fireEvent.press(touchableOpacity);
       expect(mockSetHideValues).toHaveBeenCalled();
     });
@@ -62,9 +62,7 @@ describe('Given <ActionsMolecule/>', () => {
   describe('When there is a click on the TouchableOpacity bell', () => {
     it('Then you should call', () => {
       const { getByTestId } = setup(mockContextProps);
-
       const touchableOpacity = getByTestId('ActionsMolecule-TouchableOpacity_icon-bell');
-
       fireEvent.press(touchableOpacity);
     });
   });

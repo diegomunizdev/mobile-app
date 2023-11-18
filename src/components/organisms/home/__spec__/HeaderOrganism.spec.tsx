@@ -57,11 +57,6 @@ describe('Given <HeaderOrganism/>', () => {
         const { getByTestId } = setup({ ...mockContextProps, hideValues: true });
         getByTestId('ActionsMolecule-MaterialCommunityIcons_icon-eye');
       });
-
-      it('Then when it is false the eye shouldn`t appear', () => {
-        const { getByTestId } = setup(mockContextProps);
-        getByTestId('ActionsMolecule-MaterialCommunityIcons_icon-eye-off');
-      });
     });
 
     describe('When there is a click on the ActionsMolecule TouchableOpacity eye', () => {

@@ -41,21 +41,17 @@ describe('Given <CreditCardMolecule/>', () => {
   describe('When there is a click on the MyCreditCardsAtom TouchableOpacity', () => {
     it('Then you should call navigate', () => {
       const { getByTestId } = setup();
-
       const touchableOpacity = getByTestId('MyCreditCardsAtom-TouchableOpacity');
-
       fireEvent.press(touchableOpacity);
+      expect(mockNavigate).toHaveBeenCalled();
     });
   });
 
   describe('When there is a click on the TitleRedirectorAtom TouchableOpacity', () => {
     it('Then you should call navigate', () => {
       const { getByTestId } = setup();
-
       const touchableOpacity = getByTestId('TitleRedirectorAtom-TouchableOpacity');
-
       fireEvent.press(touchableOpacity);
-
       expect(mockNavigate).toHaveBeenCalled();
     });
   });

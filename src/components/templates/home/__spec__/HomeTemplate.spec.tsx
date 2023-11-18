@@ -87,6 +87,13 @@ describe('Given <HomeTemplate/>', () => {
       fireEvent.press(touchableOpacity);
       expect(mockSetHideValues).toHaveBeenCalled();
     });
+
+    it('Then you should call', () => {
+      const { getByTestId } = setup({ ...mockContextProps, hideValues: true });
+      const touchableOpacity = getByTestId('ActionsMolecule-TouchableOpacity_icon');
+      fireEvent.press(touchableOpacity);
+      expect(mockSetHideValues).toHaveBeenCalled();
+    });
   });
 
   describe('When there is a click on the ActionsMolecule TouchableOpacity bell', () => {
@@ -115,6 +122,15 @@ describe('Given <HomeTemplate/>', () => {
         fireEvent.press(item);
         expect(mockNavigate).toHaveBeenCalled();
       });
+    });
+  });
+
+  describe('When there is a click on the MyCreditCardsAtom TouchableOpacity', () => {
+    it('Then you should call navigate', () => {
+      const { getByTestId } = setup(mockContextProps);
+      const touchableOpacity = getByTestId('MyCreditCardsAtom-TouchableOpacity');
+      fireEvent.press(touchableOpacity);
+      expect(mockNavigate).toHaveBeenCalled();
     });
   });
 });

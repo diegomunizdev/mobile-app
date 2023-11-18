@@ -1,13 +1,18 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { Text, useTheme } from 'react-native-paper';
 
 export default function MyCreditCardsAtom() {
+  const { navigate } = useNavigation();
   const theme = useTheme();
 
   return (
-    <TouchableOpacity onPress={() => {}} testID="MyCreditCardsAtom-TouchableOpacity">
+    <TouchableOpacity
+      onPress={() => navigate('myCreditCard' as never)}
+      testID="MyCreditCardsAtom-TouchableOpacity"
+    >
       <View
         style={{
           backgroundColor: theme.colors.background,

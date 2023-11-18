@@ -31,7 +31,7 @@ describe('Given <HomeView/>', () => {
       </HomeContext.Provider>,
     );
 
-  const mockSetHideValues = jest.fn();
+  const mockSetHideValues = jest.fn((state) => state);
   const mockContextProps: HomeContextProps = {
     hideValues: false,
     setHideValues: mockSetHideValues,
@@ -103,6 +103,7 @@ describe('Given <HomeView/>', () => {
       const { getByTestId } = setup(mockContextProps);
       const touchableOpacity = getByTestId('MyCreditCardsAtom-TouchableOpacity');
       fireEvent.press(touchableOpacity);
+      expect(mockNavigate).toHaveBeenCalled();
     });
   });
 });

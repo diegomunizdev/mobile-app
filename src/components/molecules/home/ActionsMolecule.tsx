@@ -15,23 +15,13 @@ export default function ActionsMolecule() {
         testID="ActionsMolecule-TouchableOpacity_icon"
         onPress={() => setHideValues(!hideValues)}
       >
-        {hideValues ? (
-          <MaterialCommunityIcons
-            testID="ActionsMolecule-MaterialCommunityIcons_icon-eye"
-            name="eye-outline"
-            size={24}
-            style={{ marginRight: 10 }}
-            color={theme.colors.primary}
-          />
-        ) : (
-          <MaterialCommunityIcons
-            testID="ActionsMolecule-MaterialCommunityIcons_icon-eye-off"
-            name="eye-off-outline"
-            size={24}
-            style={{ marginRight: 10 }}
-            color={theme.colors.primary}
-          />
-        )}
+        <MaterialCommunityIcons
+          testID="ActionsMolecule-MaterialCommunityIcons_icon-eye"
+          name={hideValues ? 'eye-outline' : 'eye-off-outline'}
+          size={24}
+          style={{ marginRight: 10 }}
+          color={theme.colors.primary}
+        />
       </TouchableOpacity>
       <TouchableOpacity testID="ActionsMolecule-TouchableOpacity_icon-bell" onPress={() => {}}>
         <MaterialCommunityIcons
