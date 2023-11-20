@@ -1,11 +1,11 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import HomeTemplate from '../../templates/home/HomeTemplate';
 
-export default function HomeView() {
+export default function HomeView(): JSX.Element {
   return (
-    <View style={{ flex: 1 }} testID="HomeView-View">
+    <ScrollView style={{ flex: 1 }} testID="HomeView-container">
       <HomeTemplate />
-    </View>
+    </ScrollView>
   );
 }

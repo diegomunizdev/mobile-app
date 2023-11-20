@@ -40,7 +40,7 @@ describe('Given <HomeView/>', () => {
   describe('When the component is renderer', () => {
     it('Then a text should appear', () => {
       const { getByTestId } = setup(mockContextProps);
-      getByTestId('HomeView-View');
+      getByTestId('HomeView-container');
     });
 
     it('Then a <HomeTemplate/> should appear', () => {

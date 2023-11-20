@@ -14,6 +14,10 @@ describe('Given <ActionsMolecule/>', () => {
   const mockSetHideValues = jest.fn((state) => state);
   const mockContextProps = { hideValues: false, setHideValues: mockSetHideValues };
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('When the component is renderer', () => {
     it('Then a View should appear', () => {
       const { getByTestId } = setup(mockContextProps);
