@@ -11,9 +11,9 @@ describe('Given <HeaderAccountOrganism/>', () => {
       getByTestId('HeaderAccountOrganism-View');
     });
 
-    it('Then a <UserMolecule/> should appear', () => {
+    it('Then a <AccountMolecule/> should appear', () => {
       const { getByTestId } = setup();
-      getByTestId('UserMolecule-TouchableOpacity');
+      getByTestId('AccountMolecule-TouchableOpacity');
     });
   });
 });

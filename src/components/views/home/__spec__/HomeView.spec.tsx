@@ -45,15 +45,15 @@ describe('Given <HomeView/>', () => {
 
     it('Then a <HomeTemplate/> should appear', () => {
       const { getByTestId } = setup(mockContextProps);
-      getByTestId('HomeTemplate-View');
+      getByTestId('HomeTemplate-container');
     });
   });
 
-  describe('When there is a click on the UserMolecule TouchableOpacity', () => {
+  describe('When there is a click on the AccountMolecule TouchableOpacity', () => {
     it('Then you should call', () => {
       const { getByTestId } = setup(mockContextProps);
 
-      const touchableOpacity = getByTestId('UserMolecule-TouchableOpacity');
+      const touchableOpacity = getByTestId('AccountMolecule-TouchableOpacity');
 
       fireEvent.press(touchableOpacity);
       expect(mockNavigate).toHaveBeenCalled();

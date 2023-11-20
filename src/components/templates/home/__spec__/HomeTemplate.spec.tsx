@@ -40,12 +40,12 @@ describe('Given <HomeTemplate/>', () => {
   describe('When the <HomeTemplate/> is renderer', () => {
     it('Then a <View/> should appear', () => {
       const { getByTestId } = setup(mockContextProps);
-      getByTestId('HomeTemplate-View');
+      getByTestId('HomeTemplate-container');
     });
 
     it('Then a <HeaderOrganism/> should appear', () => {
       const { getByTestId } = setup(mockContextProps);
-      getByTestId('HeaderOrganism-View');
+      getByTestId('HeaderOrganism-container');
     });
 
     it('Then a <AccountBalanceOrganism/> should appear', () => {
@@ -55,7 +55,7 @@ describe('Given <HomeTemplate/>', () => {
 
     it('Then a <AccountActionsOrganism/> should appear', () => {
       const { getByTestId } = setup(mockContextProps);
-      getByTestId('AccountActionsOrganism-View');
+      getByTestId('AccountActionsOrganism-container');
     });
 
     it('Then a <CreditCardOrganism/> should appear', () => {
@@ -69,12 +69,10 @@ describe('Given <HomeTemplate/>', () => {
     });
   });
 
-  describe('When there is a click on the UserMolecule TouchableOpacity', () => {
+  describe('When there is a click on the AccountMolecule TouchableOpacity', () => {
     it('Then you should call', () => {
       const { getByTestId } = setup(mockContextProps);
-
-      const touchableOpacity = getByTestId('UserMolecule-TouchableOpacity');
-
+      const touchableOpacity = getByTestId('AccountMolecule-TouchableOpacity');
       fireEvent.press(touchableOpacity);
       expect(mockNavigate).toHaveBeenCalled();
     });

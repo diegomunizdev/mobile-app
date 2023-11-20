@@ -1,13 +1,13 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
-import UserMolecule from '../UserMolecule';
+import AccountMolecule from '../AccountMolecule';
 
 type UserMoleculeProps = {
   action?: () => void;
 };
 
 describe('Given <TitleRedirectorAtom/>', () => {
-  const setup = (props: UserMoleculeProps) => render(<UserMolecule {...props} />);
+  const setup = (props: UserMoleculeProps) => render(<AccountMolecule {...props} />);
 
   const actionMock = jest.fn();
   const mockProps: UserMoleculeProps = {
@@ -17,32 +17,32 @@ describe('Given <TitleRedirectorAtom/>', () => {
   describe('When the component is renderer', () => {
     it('Then a TouchableOpacity should appear', () => {
       const { getByTestId } = setup(mockProps);
-      getByTestId('UserMolecule-TouchableOpacity');
+      getByTestId('AccountMolecule-TouchableOpacity');
     });
 
     it('Then a View should appear', () => {
       const { getByTestId } = setup(mockProps);
-      getByTestId('UserMolecule-View');
+      getByTestId('AccountMolecule-View');
     });
 
     it('Then a Avatar should appear', () => {
       const { getByTestId } = setup(mockProps);
-      getByTestId('UserMolecule-Avatar');
+      getByTestId('AccountMolecule-Avatar');
     });
 
     it('Then a View user should appear', () => {
       const { getByTestId } = setup(mockProps);
-      getByTestId('UserMolecule-View-user');
+      getByTestId('AccountMolecule-View-user');
     });
 
     it('Then a View Text hello should appear', () => {
       const { getByTestId } = setup(mockProps);
-      getByTestId('UserMolecule-Text-hello');
+      getByTestId('AccountMolecule-Text-hello');
     });
 
     it('Then a View Text username should appear', () => {
       const { getByTestId } = setup(mockProps);
-      getByTestId('UserMolecule-Text-username');
+      getByTestId('AccountMolecule-Text-username');
     });
   });
 
@@ -50,7 +50,7 @@ describe('Given <TitleRedirectorAtom/>', () => {
     it('Then you should call', () => {
       const { getByTestId } = setup(mockProps);
 
-      const touchableOpacity = getByTestId('UserMolecule-TouchableOpacity');
+      const touchableOpacity = getByTestId('AccountMolecule-TouchableOpacity');
 
       fireEvent.press(touchableOpacity);
       expect(actionMock).toHaveBeenCalled();

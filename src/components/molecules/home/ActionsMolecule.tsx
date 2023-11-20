@@ -1,7 +1,8 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTheme } from 'react-native-paper';
+
 import { useHomeContext } from '../../../contexts/home/homeContext';
 
 export default function ActionsMolecule() {
@@ -9,8 +10,15 @@ export default function ActionsMolecule() {
 
   const { hideValues, setHideValues } = useHomeContext();
 
+  const styles = StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      gap: 15,
+    },
+  });
+
   return (
-    <View style={{ flexDirection: 'row' }} testID="ActionsMolecule-View">
+    <View style={styles.container} testID="ActionsMolecule-container">
       <TouchableOpacity
         testID="ActionsMolecule-TouchableOpacity_icon"
         onPress={() => setHideValues(!hideValues)}
@@ -19,7 +27,6 @@ export default function ActionsMolecule() {
           testID="ActionsMolecule-MaterialCommunityIcons_icon-eye"
           name={hideValues ? 'eye-outline' : 'eye-off-outline'}
           size={24}
-          style={{ marginRight: 10 }}
           color={theme.colors.primary}
         />
       </TouchableOpacity>

@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import UserMolecule from '../../molecules/home/UserMolecule';
-import ActionsMolecule from '../../molecules/home/ActionsMolecule';
 import { useNavigation } from '@react-navigation/native';
+
+import AccountMolecule from '../../molecules/home/AccountMolecule';
+import ActionsMolecule from '../../molecules/home/ActionsMolecule';
 
 export default function HeaderOrganism() {
   const { navigate } = useNavigation();
@@ -19,8 +20,8 @@ export default function HeaderOrganism() {
   });
 
   return (
-    <View style={styles.container} testID="HeaderOrganism-View">
-      <UserMolecule action={() => navigate('account' as never)} />
+    <View style={styles.container} testID="HeaderOrganism-container">
+      <AccountMolecule action={() => navigate('account' as never)} />
       <ActionsMolecule />
     </View>
   );

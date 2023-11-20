@@ -21,7 +21,7 @@ describe('Given <ActionsMolecule/>', () => {
   describe('When the component is renderer', () => {
     it('Then a View should appear', () => {
       const { getByTestId } = setup(mockContextProps);
-      getByTestId('ActionsMolecule-View');
+      getByTestId('ActionsMolecule-container');
     });
 
     it('Then a TouchableOpacity eye should appear', () => {
