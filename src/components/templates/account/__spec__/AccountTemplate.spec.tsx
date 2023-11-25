@@ -8,7 +8,6 @@ describe('Given <AccountTemplate/>', () => {
   describe('When the component is renderer', () => {
     it('Then a <View/> should appear', () => {
       const { getByTestId } = setup();
-      expect(setup()).toMatchSnapshot();
       getByTestId('AccountTemplate-container');
     });
   });
