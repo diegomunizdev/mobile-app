@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react-native';
+import { act, fireEvent, render } from '@testing-library/react-native';
 import HomeView from '../HomeView';
 import { HomeContext, HomeContextProps } from '../../../../contexts/home/homeContext';
 
@@ -43,9 +43,34 @@ describe('Given <HomeView/>', () => {
       getByTestId('HomeView-container');
     });
 
+    it('Then a refresh control should be triggered', async () => {
+      const stateMock = jest.fn(() => false);
+      const setStateMock = jest.fn();
+      jest.spyOn(React, 'useState').mockImplementationOnce(() => [stateMock, setStateMock]);
+      const { getByTestId } = setup(mockContextProps);
+      const scrollview = getByTestId('HomeView-container');
+      const { refreshControl } = scrollview.props;
+      await act(async () => {
+        jest.useFakeTimers();
+        refreshControl.props.onRefresh();
+        jest.runAllTimers();
+      });
+      expect(setStateMock).toHaveBeenCalled();
+    });
+
     it('Then a <HomeTemplate/> should appear', () => {
       const { getByTestId } = setup(mockContextProps);
       getByTestId('HomeTemplate-container');
+    });
+
+    it('Then a <ActionsMolecule/> hideValues false should appear', () => {
+      const { getByTestId } = setup(mockContextProps);
+      getByTestId('ActionsMolecule-container');
+    });
+
+    it('Then a <ActionsMolecule/> hideValues true should appear', () => {
+      const { getByTestId } = setup({ ...mockContextProps, hideValues: true });
+      getByTestId('ActionsMolecule-container');
     });
   });
 

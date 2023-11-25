@@ -1,17 +1,14 @@
 import React from 'react';
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 import { Avatar, Button, Divider, Text, useTheme } from 'react-native-paper';
 
 export default function AccountTemplate() {
-  const { goBack } = useNavigation();
   const theme = useTheme();
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      marginTop: 50,
       marginHorizontal: 20,
     },
     divider: {
@@ -34,16 +31,8 @@ export default function AccountTemplate() {
 
   return (
     <ScrollView style={styles.container} testID="AccountTemplate-container">
-      <TouchableOpacity onPress={() => goBack()} testID="AccountTemplate-TouchableOpacity">
-        <MaterialCommunityIcons
-          name="chevron-left"
-          size={24}
-          testID="AccountTemplate-MaterialCommunityIcons"
-        />
-      </TouchableOpacity>
-
       <View
-        style={{ flexDirection: 'row', gap: 10, alignItems: 'center', marginVertical: 30 }}
+        style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}
         testID="AccountMolecule-View"
       >
         <Avatar.Text size={40} label="DM" testID="AccountMolecule-Avatar" />

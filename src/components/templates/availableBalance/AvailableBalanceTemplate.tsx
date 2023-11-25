@@ -1,21 +1,11 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 import { Divider, Text } from 'react-native-paper';
 
 export default function AvailableBalanceTemplate() {
-  const { goBack } = useNavigation();
-
   return (
-    <View style={{ marginTop: 50, marginHorizontal: 20 }} testID="AccountTemplate-View">
-      <TouchableOpacity onPress={() => goBack()} testID="AccountTemplate-TouchableOpacity">
-        <MaterialCommunityIcons
-          name="chevron-left"
-          size={24}
-          testID="AccountTemplate-MaterialCommunityIcons"
-        />
-      </TouchableOpacity>
+    <ScrollView style={{ marginHorizontal: 20 }} testID="AccountTemplate-View">
       <View style={{ flexDirection: 'row', marginTop: 20 }}>
         <MaterialCommunityIcons
           name="cash"
@@ -42,6 +32,6 @@ export default function AvailableBalanceTemplate() {
       <Text variant="titleMedium" style={{ marginTop: 20 }} testID="AvailableBalanceTemplate-Text">
         Histórico
       </Text>
-    </View>
+    </ScrollView>
   );
 }

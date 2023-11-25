@@ -1,19 +1,14 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { Text, useTheme } from 'react-native-paper';
 
 export default function CreditCardView() {
   const theme = useTheme();
-  const { goBack } = useNavigation();
 
   return (
-    <View style={{ flex: 1 }}>
-      <View style={{ marginTop: 50, marginHorizontal: 20 }}>
-        <TouchableOpacity onPress={() => goBack()}>
-          <MaterialCommunityIcons name="chevron-left" size={24} />
-        </TouchableOpacity>
+    <ScrollView style={{ flex: 1 }}>
+      <View style={{ marginHorizontal: 20 }}>
         <View style={{ marginBottom: 20 }}>
           <Text variant="titleLarge" style={{ marginTop: 20 }} testID="MyCreditCardsTemplate-Text">
             Meus cartões de crédito
@@ -44,6 +39,6 @@ export default function CreditCardView() {
           </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
