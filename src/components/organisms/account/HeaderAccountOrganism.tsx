@@ -1,10 +1,10 @@
 import React from 'react';
-import UserMolecule from '../../molecules/home/UserMolecule';
+import UserMolecule from '../../molecules/home/AccountMolecule';
 import { View } from 'react-native';
 
 export default function HeaderAccountOrganism() {
   return (
-    <View style={{ marginVertical: 30 }} testID="HeaderAccountOrganism-View">
+    <View style={{ marginVertical: 30 }} testID="HeaderAccountOrganism-container">
       <UserMolecule />
     </View>
   );

@@ -1,8 +1,12 @@
 import React from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import AccountActionsMolecule from '../../molecules/home/AccountActionsMolecule';
 
 export default function AccountActionsOrganism() {
+  const styles = StyleSheet.create({
+    container: { marginVertical: 30 },
+  });
+
   const options = [
     {
       name: 'Área pix',
@@ -35,16 +39,15 @@ export default function AccountActionsOrganism() {
   ];
 
   return (
-    <View style={{ marginVertical: 30 }} testID="AccountActionsOrganism-View">
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        testID="AccountActionsOrganism-ScrollView"
-      >
-        {options.map((item, index) => (
-          <AccountActionsMolecule key={index} name={item.name} icon={item.icon} />
-        ))}
-      </ScrollView>
-    </View>
+    <ScrollView
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      style={styles.container}
+      testID="AccountActionsOrganism-container"
+    >
+      {options.map((item, index) => (
+        <AccountActionsMolecule key={index} name={item.name} icon={item.icon} />
+      ))}
+    </ScrollView>
   );
 }

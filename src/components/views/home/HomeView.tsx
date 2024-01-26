@@ -1,11 +1,40 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { RefreshControl, ScrollView, StyleSheet } from 'react-native';
 import HomeTemplate from '../../templates/home/HomeTemplate';
 
-export default function HomeView() {
+
+const HomeView = (): JSX.Element => {
+  const [refreshing, setRefreshing] = useState<boolean>(false);
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+  });
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 3000);
+  }, []);
+
   return (
-    <View style={{ flex: 1 }} testID="HomeView-View">
+    <ScrollView
+      style={styles.container}
+      showsVerticalScrollIndicator={false}
+      refreshControl={
+        <RefreshControl
+          testID="HomeView-RefreshControl"
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+        />
+      }
+      testID="HomeView-container"
+    >
       <HomeTemplate />
-    </View>
+    </ScrollView>
   );
-}
+};
+
+export default HomeView;

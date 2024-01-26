@@ -28,24 +28,24 @@ describe('Given <HeaderOrganism/>', () => {
   describe('When the component is renderer', () => {
     it('Then a View should appear', () => {
       const { getByTestId } = setup(mockContextProps);
-      getByTestId('HeaderOrganism-View');
+      getByTestId('HeaderOrganism-container');
     });
 
-    it('Then a <UserMolecule/> should appear', () => {
+    it('Then a <AccountMolecule/> should appear', () => {
       const { getByTestId } = setup(mockContextProps);
-      getByTestId('UserMolecule-TouchableOpacity');
+      getByTestId('AccountMolecule-TouchableOpacity');
     });
 
     it('Then a <ActionsMolecule/> should appear', () => {
       const { getByTestId } = setup(mockContextProps);
-      getByTestId('ActionsMolecule-View');
+      getByTestId('ActionsMolecule-container');
     });
   });
 
-  describe('When there is a click on the UserMolecule TouchableOpacity', () => {
+  describe('When there is a click on the AccountMolecule TouchableOpacity', () => {
     it('Then you should call', () => {
       const { getByTestId } = setup(mockContextProps);
-      const touchableOpacity = getByTestId('UserMolecule-TouchableOpacity');
+      const touchableOpacity = getByTestId('AccountMolecule-TouchableOpacity');
       fireEvent.press(touchableOpacity);
       expect(mockNavigate).toHaveBeenCalled();
     });

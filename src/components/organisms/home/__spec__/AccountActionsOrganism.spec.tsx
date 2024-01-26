@@ -6,14 +6,9 @@ describe('Given <AccountActionsOrganism/>', () => {
   const setup = () => render(<AccountActionsOrganism />);
 
   describe('When the component is renderer', () => {
-    it('Then a View should appear', () => {
-      const { getByTestId } = setup();
-      getByTestId('AccountActionsOrganism-View');
-    });
-
     it('Then a ScrollView should appear', () => {
       const { getByTestId } = setup();
-      getByTestId('AccountActionsOrganism-ScrollView');
+      getByTestId('AccountActionsOrganism-container');
     });
 
     it('Then a <AccountActionsMolecule/> should appear', () => {

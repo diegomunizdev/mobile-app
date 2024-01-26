@@ -1,21 +1,28 @@
 import React from 'react';
+import { Divider } from 'react-native-paper';
+import { StyleSheet, View } from 'react-native';
+
 import HeaderOrganism from '../../organisms/home/HeaderOrganism';
 import AccountBalanceOrganism from '../../organisms/home/AccountBalanceOrganism';
 import AccountActionsOrganism from '../../organisms/home/AccountActionsOrganism';
-import { Divider } from 'react-native-paper';
 import CreditCardOrganism from '../../organisms/home/CreditCardOrganism';
 import LoanContractingOrganism from '../../organisms/home/LoanContractingOrganism';
-import { View } from 'react-native';
 
 export default function HomeTemplate() {
+  const styles = StyleSheet.create({
+    divider: {
+      marginHorizontal: 20,
+    },
+  });
+
   return (
-    <View testID="HomeTemplate-View">
+    <View testID="HomeTemplate-container">
       <HeaderOrganism />
       <AccountBalanceOrganism />
       <AccountActionsOrganism />
-      <Divider style={{ marginHorizontal: 20 }} />
+      <Divider style={styles.divider} />
       <CreditCardOrganism />
-      <Divider style={{ marginHorizontal: 20 }} />
+      <Divider style={styles.divider} />
       <LoanContractingOrganism />
     </View>
   );

@@ -17,7 +17,7 @@ jobs:
       - name: run the tests
         run: |
           yarn
-          yarn test
+          yarn test --coverage
 
   tests_result:
     if: ${{ always() }}

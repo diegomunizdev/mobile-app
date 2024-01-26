@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react-native';
+import { act, fireEvent, render } from '@testing-library/react-native';
 import HomeView from '../HomeView';
 import { HomeContext, HomeContextProps } from '../../../../contexts/home/homeContext';
 
@@ -40,20 +40,45 @@ describe('Given <HomeView/>', () => {
   describe('When the component is renderer', () => {
     it('Then a text should appear', () => {
       const { getByTestId } = setup(mockContextProps);
-      getByTestId('HomeView-View');
+      getByTestId('HomeView-container');
+    });
+
+    it('Then a refresh control should be triggered', async () => {
+      const stateMock = jest.fn(() => false);
+      const setStateMock = jest.fn();
+      jest.spyOn(React, 'useState').mockImplementationOnce(() => [stateMock, setStateMock]);
+      const { getByTestId } = setup(mockContextProps);
+      const scrollview = getByTestId('HomeView-container');
+      const { refreshControl } = scrollview.props;
+      await act(async () => {
+        jest.useFakeTimers();
+        refreshControl.props.onRefresh();
+        jest.runAllTimers();
+      });
+      expect(setStateMock).toHaveBeenCalled();
     });
 
     it('Then a <HomeTemplate/> should appear', () => {
       const { getByTestId } = setup(mockContextProps);
-      getByTestId('HomeTemplate-View');
+      getByTestId('HomeTemplate-container');
+    });
+
+    it('Then a <ActionsMolecule/> hideValues false should appear', () => {
+      const { getByTestId } = setup(mockContextProps);
+      getByTestId('ActionsMolecule-container');
+    });
+
+    it('Then a <ActionsMolecule/> hideValues true should appear', () => {
+      const { getByTestId } = setup({ ...mockContextProps, hideValues: true });
+      getByTestId('ActionsMolecule-container');
     });
   });
 
-  describe('When there is a click on the UserMolecule TouchableOpacity', () => {
+  describe('When there is a click on the AccountMolecule TouchableOpacity', () => {
     it('Then you should call', () => {
       const { getByTestId } = setup(mockContextProps);
 
-      const touchableOpacity = getByTestId('UserMolecule-TouchableOpacity');
+      const touchableOpacity = getByTestId('AccountMolecule-TouchableOpacity');
 
       fireEvent.press(touchableOpacity);
       expect(mockNavigate).toHaveBeenCalled();

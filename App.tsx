@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import Application from './src';
 import { PaperProvider, MD3LightTheme as DefaultTheme } from 'react-native-paper';

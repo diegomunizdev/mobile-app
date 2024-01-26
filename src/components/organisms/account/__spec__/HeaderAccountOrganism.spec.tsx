@@ -8,12 +8,12 @@ describe('Given <HeaderAccountOrganism/>', () => {
   describe('When the component is renderer', () => {
     it('Then a View should appear', () => {
       const { getByTestId } = setup();
-      getByTestId('HeaderAccountOrganism-View');
+      getByTestId('HeaderAccountOrganism-container');
     });
 
-    it('Then a <UserMolecule/> should appear', () => {
+    it('Then a <AccountMolecule/> should appear', () => {
       const { getByTestId } = setup();
-      getByTestId('UserMolecule-TouchableOpacity');
+      getByTestId('AccountMolecule-TouchableOpacity');
     });
   });
 });
