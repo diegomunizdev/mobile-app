@@ -16,7 +16,6 @@ const theme = {
 
 export default function Routes() {
   const { isAuthenticated } = useAuthContext();
-  console.log('isAuth', isAuthenticated);
   return (
     <NavigationContainer theme={theme}>
       {isAuthenticated ? (

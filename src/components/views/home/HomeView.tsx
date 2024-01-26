@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { RefreshControl, ScrollView, StyleSheet } from 'react-native';
 import HomeTemplate from '../../templates/home/HomeTemplate';
 
+
 const HomeView = (): JSX.Element => {
   const [refreshing, setRefreshing] = useState<boolean>(false);
 

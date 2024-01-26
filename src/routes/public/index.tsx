@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ScreenProps } from 'react-native-screens';
+import { NativeStackNavigationOptions, createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeView from '../../components/views/home/HomeView';
 import CreditCardView from '../../components/views/cards/creditCard/CreditCardView';
 
@@ -20,12 +19,12 @@ export default function PublicRoutes() {
     {
       name: 'home',
       component: HomeView,
-      options: { animation: 'fade', headerShown: false } as ScreenProps,
+      options: { headerShown: false } as NativeStackNavigationOptions,
     },
     {
       name: 'creditCard',
       component: CreditCardView,
-      options: { animation: 'fade', headerShown: false } as ScreenProps,
+      options: { headerShown: false } as NativeStackNavigationOptions,
     },
   ];
 

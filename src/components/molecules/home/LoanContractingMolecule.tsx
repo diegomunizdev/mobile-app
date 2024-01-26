@@ -1,11 +1,15 @@
 import React from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import TitleRedirectorAtom from '../../atoms/home/TitleRedirectorAtom';
 
 export default function LoanContractingMolecule() {
+  const styles = StyleSheet.create({
+    container: { marginBottom: 20, marginTop: 20 },
+  });
+
   return (
-    <View style={{ marginBottom: 20, marginTop: 20 }} testID="LoanContractingMolecule-View">
+    <View style={styles.container} testID="LoanContractingMolecule-View">
       <TitleRedirectorAtom title="Empréstimo" navigateName="creditCard" />
       <Text testID="LoanContractingMolecule-Text_available-value" variant="bodySmall">
         Valor disponível

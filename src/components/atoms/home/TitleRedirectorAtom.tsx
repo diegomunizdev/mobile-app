@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -12,19 +12,21 @@ type TitleRedirectorAtomProps = {
 export default function TitleRedirectorAtom({ title, navigateName }: TitleRedirectorAtomProps) {
   const { navigate } = useNavigation();
 
+  const styles = StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: 10,
+    },
+  });
+
   return (
     <TouchableOpacity
       onPress={() => navigate(navigateName as never)}
       testID="TitleRedirectorAtom-TouchableOpacity"
     >
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          marginBottom: 10,
-        }}
-      >
+      <View style={styles.container}>
         <Text variant="bodyLarge" testID="TitleRedirectorAtom-Text">
           {title}
         </Text>

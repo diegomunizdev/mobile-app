@@ -4,6 +4,7 @@
     "lib": ["esnext"],
     "target": "ES6",
     "strict": true,
+    "resolveJsonModule": true,
     "module": "esnext"
   },
   "include": ["src/**/*"],
